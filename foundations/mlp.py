@@ -16,7 +16,11 @@ class Solution:
 
         for i in range(n_layers):
             z = h @ weights[i] + biases[i]
-            h = np.maximum(0, z)
+
+            if i < n_layers - 1:
+                h = np.maximum(0, z)
+            else:
+                h = z
 
         return np.round(h, 5)
 
